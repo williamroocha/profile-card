@@ -1,13 +1,142 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap");
+
+:root {
+  /* Colors */
+  --color-background-primary: #161526;
+  --color-text: #ffffff;
+  --color-button-hover: rgba(255, 255, 255, 0.1);
+  --color-button-background: rgba(255, 255, 255, 0.15);
+  --color-button-border: rgba(255, 255, 255, 0.3);
+  --color-button-hover-background: rgba(255, 255, 255, 0.3);
+
+  /* Gradient Background */
+  --new-gradient-background: linear-gradient(135deg, #449cc3, #2f28cc);
+
+  /* Fonts */
+  --font-family: "IBM Plex Mono", sans-serif;
+  --font-size-body: clamp(0.85rem, 1vw + 0.7rem, 1rem);
+  --font-size-heading: clamp(1.2rem, 3vw + 1rem, 2rem);
+  --font-weight-regular: 300;
+  --font-weight-semibold: 400;
+  --font-weight-bold: 500;
+
+  /* Spacing */
+  --spacing-small: 0.4rem;
+  --spacing-medium: 0.6rem;
+  --spacing-large: 1rem;
+  --spacing-xlarge: clamp(1rem, 2vw + 0.8rem, 2rem);
+
+  /* Border Radius */
+  --border-radius: 0.5rem;
+  --border-radius-circle: 50%;
+
+  /* Button */
+  --button-padding: clamp(0.4rem, 0.8vw + 0.4rem, 0.6rem) clamp(0.6rem, 1.5vw + 0.5rem, 1rem); /* Adaptive padding */
+  --button-border: 1px solid var(--color-button-border);
+  --button-transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  --button-backdrop-filter: blur(clamp(5px, 1vw + 5px, 10px)); /* Responsive blur effect */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  background: var(--color-background-primary);
+}
+
+/* Layout */
+.wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.container {
+  width: min(90%, 20rem);
+  padding: var(--spacing-large);
+  border-radius: var(--border-radius);
+  background: var(--new-gradient-background);
+  text-align: center;
+}
+
+/* Profile Image */
+.profile-img {
+  width: clamp(5em, 20vw, 7em);
+  height: clamp(5em, 20vw, 7em);
+  border-radius: var(--border-radius-circle);
+  margin: 0 auto var(--spacing-medium);
+  display: block;
+  border: 3px solid #3DB2A2; 
+}
+
+/* Profile Name */
+.profile-name {
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-small);
+  color: var(--color-text);
+}
+
+/* Location */
+.location {
+  color: var(--color-text);
+  font-style: italic;
+  margin-bottom: var(--spacing-medium);
+}
+
+/* Bio */
+.bio {
+  color: var(--color-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+  margin: 3rem 0;
+}
+
+/* Button Container */
+.button-container {
+  padding: 0 var(--spacing-large);
+  margin-top: var(--spacing-medium);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-small);
+  flex-wrap: nowrap; /* Ensure buttons stay on the same line */
+}
+
+/* Button */
+.btn {
+  padding: var(--button-padding);
+  flex: 1; /* Ensure buttons take equal space */
+  background: var(--color-button-background);
+  border: var(--button-border);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: var(--button-transition);
+  backdrop-filter: var(--button-backdrop-filter);
+  -webkit-backdrop-filter: var(--button-backdrop-filter);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-button-hover-background);
+  outline: none;
+}
+
+/* Button Icon */
+.btn-icon {
+  width: clamp(18px, 2vw, 20px);
+  height: clamp(18px, 2vw, 20px);
 }
